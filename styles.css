@@ -1,0 +1,25 @@
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: black;
+    color: snow;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score {
+    font-size: 60px;
+    margin-bottom: 48px;
+}
+
+.buttons {
+    display: flex;
+    gap: 36px;
+}
+
+button {
+    font-size: 36px;
+    padding: 4px 16px;
+}
