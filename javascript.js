@@ -3,8 +3,7 @@ let computerScore = 0;
 
 const scoreDiv = document.querySelector(".score");
 const messageDiv = document.querySelector(".message");
-const rockButton = document.querySelector("#rock");
-const paperButton = document.querySelector("#paper");
+const buttonsDiv = document.querySelector(".buttons");
 const buttons = document.querySelectorAll("button");
 
 function getComputerChoice() {
@@ -36,9 +35,34 @@ function playRound(humanChoice, computerChoice) {
     scoreDiv.textContent = `You ${humanScore} : ${computerScore} Computer`
 
     // If the game has ended, display winner and restart button
-//     if (humanScore === 5 || computerScore === 5) {
+    if (humanScore === 5) {
+        messageDiv.textContent = "You win!";
+        endGame();
+    } else if (computerScore === 5) {
+        messageDiv.textContent = "You lose!";
+        endGame();
+    }
+}
 
-//     }
+function endGame() {
+    buttons.forEach((button) => button.remove());
+
+    // Display restart button
+    const restartButton = document.createElement("button");
+    buttonsDiv.append(restartButton);
+    restartButton.textContent = "Restart"
+    restartButton.addEventListener("click", () => {
+        restart();
+        buttonsDiv.append(...buttons);
+        restartButton.remove();
+    })
+}
+
+function restart() {
+    humanScore = 0;
+    computerScore = 0;
+    scoreDiv.textContent = "You 0 : 0 Computer";
+    messageDiv.textContent = "Choose your move!";
 }
 
 buttons.forEach((button) => {
@@ -46,3 +70,5 @@ buttons.forEach((button) => {
         playRound(event.target.id, getComputerChoice());
     })
 });
+
+restart();
