@@ -11,6 +11,11 @@ body {
 
 .score {
     font-size: 60px;
+    margin-bottom: 24px;
+}
+
+.message {
+    font-size: 48px;
     margin-bottom: 48px;
 }
 
